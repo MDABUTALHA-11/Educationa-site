@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics Chapters</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .water-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #6dd5ed, #2193b0);
+            z-index: -1;
+            animation: waterMove 20s ease-in-out infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes waterMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .chapter-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            overflow: hidden;
+        }
+
+        .chapter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .chapter-image {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .chapter-card:hover .chapter-image {
+            transform: scale(1.05);
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(0);
+            animation: rippleEffect 1s linear;
+            pointer-events: none;
+        }
+
+        @keyframes rippleEffect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        .main-title {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .wave {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.2' d='M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,224C672,213,768,171,864,154.7C960,139,1056,149,1152,154.7C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: 100% 100%;
+            animation: waveMove 20s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes waveMove {
+            0% { background-position-x: 0; }
+            100% { background-position-x: 1440px; }
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .chapter-title {
+            color: #2193b0;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .chapter-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+    </style>
+
+    <!--Google font anek bangla -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@100..800&family=Baloo+Da+2:wght@400..800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Noto+Serif+Bengali:wght@100..900&family=Rubik+Wet+Paint&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+<body style="font-family: Anek Bangla;">
+    <div class="water-bg"></div>
+    <div class="wave"></div>
+
+    <div class="container py-5">
+        <h1 class="text-center mb-5 main-title">Physics Chapters</h1>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="chapter-card card h-100">
+                    <img src="img/chapter-image/Classical Mechanics.jpeg" alt="Classical Mechanics" class="chapter-image">
+                    <div class="card-content">
+                        <h3 class="chapter-title"><a href="/Sub-section/Classical.html" class="btn btn-outline-primary">Classical Mechanics</a></h3>
+                        <p class="chapter-description">Study of motion, forces, energy, and the fundamental laws that govern the physical world.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="chapter-card card h-100">
+                    <img src="img/chapter-image/Thermodynamics.jpeg" alt="Thermodynamics" class="chapter-image">
+                    <div class="card-content">
+                        <h3 class="chapter-title"><a href="/Sub-section/Classical.html" class="btn btn-outline-primary">Thermodynamics</a></h3>
+                        <p class="chapter-description">Analysis of heat, temperature, energy, and their relationships in physical systems.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="chapter-card card h-100">
+                    <img src="img/chapter-image/Electromagnetism (1).jpeg" alt="Electromagnetism" class="chapter-image">
+                    <div class="card-content">
+                        <h3 class="chapter-title"><a href="/Sub-section/Classical.html" class="btn btn-outline-primary">Electromagnetism</a></h3>
+                        <p class="chapter-description">Study of electrical and magnetic phenomena and their unified nature.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="chapter-card card h-100">
+                    <img src="img/chapter-image/Waves and Oscillations.jpeg" alt="Waves and Oscillations" class="chapter-image">
+                    <div class="card-content">
+                        <h3 class="chapter-title"><a href="/Sub-section/Classical.html" class="btn btn-outline-primary">Waves and Oscillations</a></h3>
+                        <p class="chapter-description">Understanding periodic motion and wave phenomena in various mediums.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="chapter-card card h-100">
+                    <img src="img/chapter-image/Optics.jpeg" alt="Optics" class="chapter-image">
+                    <div class="card-content">
+                        <h3 class="chapter-title"><a href="/Sub-section/Classical.html" class="btn btn-outline-primary">Optics</a></h3>
+                        <p class="chapter-description">Study of light behavior, including reflection, refraction, and optical phenomena.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="chapter-card card h-100">
+                    <img src="img/chapter-image/Quantum Mechanics.jpeg" alt="Quantum Mechanics" class="chapter-image">
+                    <div class="card-content">
+                        <h3 class="chapter-title"><a href="/Sub-section/Classical.html" class="btn btn-outline-primary">Quantum Mechanics</a></h3>
+                        <p class="chapter-description">Theory describing behavior of matter and energy at the atomic and subatomic scale.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="chapter-card card h-100">
+                    <img src="img/chapter-image/Statistical Mechanics.jpeg" alt="Statistical Mechanics" class="chapter-image">
+                    <div class="card-content">
+                        <h3 class="chapter-title"><a href="/Sub-section/Classical.html" class="btn btn-outline-primary">Statistical Mechanics</a></h3>
+                        <p class="chapter-description">Application of statistical methods to the behavior of large systems of particles.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="chapter-card card h-100">
+                    <img src="img/chapter-image/Relativity.jpeg" alt="Relativity" class="chapter-image">
+                    <div class="card-content">
+                        <h3 class="chapter-title"><a href="/Sub-section/Classical.html" class="btn btn-outline-primary">Relativity</a></h3>
+                        <p class="chapter-description">Einstein's theories of space, time, and gravity at cosmic scales.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="chapter-card card h-100">
+                    <img src="img/chapter-image/Nuclear Physics.jpeg" alt="Nuclear Physics" class="chapter-image">
+                    <div class="card-content">
+                        <h3 class="chapter-title"><a href="/Sub-section/Classical.html" class="btn btn-outline-primary">Nuclear Physics</a></h3>
+                        <p class="chapter-description">Study of atomic nuclei, nuclear reactions, and nuclear forces.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="chapter-card card h-100">
+                    <img src="img/chapter-image/Particle Physics.jpeg" alt="Particle Physics" class="chapter-image">
+                    <div class="card-content">
+                        <h3 class="chapter-title"><a href="/Sub-section/Classical.html" class="btn btn-outline-primary">Particle Physics</a></h3>
+                        <p class="chapter-description">Investigation of fundamental particles and their interactions.</p>
+                    </div>
+                </div>
+            </div>
+           <!--
+            <div class="col-md-4">
+                <div class="chapter-card card h-100">
+                    <img src="img/chapter-image/" alt="Condensed Matter Physics" class="chapter-image">
+                    <div class="card-content">
+                        <h3 class="chapter-title">Condensed Matter Physics</h3>
+                        <p class="chapter-description">Study of matter in its condensed phases, including solids and liquids.</p>
+                    </div>
+                </div>
+            </div> -->
+            <div class="col-md-4">
+                <div class="chapter-card card h-100">
+                    <img src="img/chapter-image/Astrophysics and Cosmology.jpeg" alt="Astrophysics and Cosmology" class="chapter-image">
+                    <div class="card-content">
+                        <h3 class="chapter-title"><a href="/Sub-section/Classical.html" class="btn btn-outline-primary">Astrophysics and Cosmology</a></h3>
+                        <p class="chapter-description">Study of celestial objects, universe structure, and cosmic evolution.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.chapter-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // Create ripple effect
+                    const ripple = document.createElement('div');
+                    ripple.classList.add('ripple');
+                    
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+                    
+                    card.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 1000);   
+                });
+            });
+        });
+    </script>
+</body>
+</html>

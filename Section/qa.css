@@ -1,0 +1,13 @@
+.accordion-item {
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+img, video {
+    margin-top: 15px;
+}

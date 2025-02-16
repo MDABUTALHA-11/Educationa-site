@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classical Mechanics</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --intro-color: #FF6B6B;
+            --kinematics-color: #4ECDC4;
+            --newton-color: #45B7D1;
+            --energy-color: #96CEB4;
+            --momentum-color: #FFEEAD;
+            --rotation-color: #D4A5A5;
+        }
+
+        body {
+            background: #f0f2f5;
+            overflow-x: hidden;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #6c5ce7, #a363d8);
+            padding: 100px 0;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+
+        .chapter-card {
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .chapter-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-indicator {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+        }
+
+        .chapter-number {
+            font-size: 4rem;
+            font-weight: 700;
+            opacity: 0.1;
+            position: absolute;
+            right: 20px;
+            top: 10px;
+        }
+
+        .content-section {
+            padding: 30px;
+        }
+
+        .topic-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .topic-list li {
+            padding: 10px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .topic-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--bs-primary);
+        }
+
+        .progress-section {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .read-more-btn {
+            background: transparent;
+            border: 2px solid currentColor;
+            border-radius: 25px;
+            padding: 8px 25px;
+            transition: all 0.3s ease;
+        }
+
+        .read-more-btn:hover {
+            background: currentColor;
+            color: white !important;
+        }
+
+        .floating-nav {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            padding: 10px;
+            border-radius: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-dot:hover {
+            transform: scale(1.5);
+        }
+    </style>
+
+<!--Google font anek bangla -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@100..800&family=Baloo+Da+2:wght@400..800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Noto+Serif+Bengali:wght@100..900&family=Rubik+Wet+Paint&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
+</head>
+<body style="font-family:Anek Bangla ;">
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-particles" id="particles"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-4">Classical Mechanics</h1>
+                    <p class="lead">Discover the fundamental principles that govern motion and forces in our universe.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container py-5">
+        <!-- Introduction -->
+        <div class="chapter-card bg-white" id="intro">
+            <div class="card-indicator" style="background: var(--intro-color)"></div>
+            <div class="content-section">
+                <div class="chapter-number">01</div>
+                <h2 class="mb-4" style="color: var(--intro-color)">Introduction to Classical Mechanics</h2>
+                <p class="lead">The foundation of modern physics and engineering.</p>
+                <div class="row mt-4">
+                    <div class="col-md-8">
+                        <ul class="topic-list">
+                            <li>Historical Development of Mechanics</li>
+                            <li>Scope and Applications</li>
+                            <li>Basic Mathematical Tools</li>
+                            <li>Units and Measurements</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="progress-section">
+                            <small class="text-muted">Chapter Progress</small>
+                            <div class="progress mt-2">
+                                <div class="progress-bar" role="progressbar" style="width: 85%; background: var(--intro-color)" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="read-more-btn mt-4" style="color: var(--intro-color)">Read Chapter</button>
+            </div>
+        </div>
+
+        <!-- Kinematics -->
+        <div class="chapter-card bg-white" id="kinematics">
+            <div class="card-indicator" style="background: var(--kinematics-color)"></div>
+            <div class="content-section">
+                <div class="chapter-number">02</div>
+                <h2 class="mb-4" style="color: var(--kinematics-color)">Kinematics: The Study of Motion</h2>
+                <p class="lead">Understanding how objects move through space and time.</p>
+                <div class="row mt-4">
+                    <div class="col-md-8">
+                        <ul class="topic-list">
+                            <li>Position, Velocity, and Acceleration</li>
+                            <li>Motion in One Dimension</li>
+                            <li>Motion in Two and Three Dimensions</li>
+                            <li>Projectile Motion</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="progress-section">
+                            <small class="text-muted">Chapter Progress</small>
+                            <div class="progress mt-2">
+                                <div class="progress-bar" role="progressbar" style="width: 65%; background: var(--kinematics-color)" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="read-more-btn mt-4" style="color: var(--kinematics-color)">Read Chapter</button>
+            </div>
+        </div>
+
+        <!-- Newton's Laws -->
+        <div class="chapter-card bg-white" id="newton">
+            <div class="card-indicator" style="background: var(--newton-color)"></div>
+            <div class="content-section">
+                <div class="chapter-number">03</div>
+                <h2 class="mb-4" style="color: var(--newton-color)">Newton's Laws of Motion</h2>
+                <p class="lead">The fundamental principles governing forces and motion.</p>
+                <div class="row mt-4">
+                    <div class="col-md-8">
+                        <ul class="topic-list">
+                            <li>First Law: Law of Inertia</li>
+                            <li>Second Law: Force and Acceleration</li>
+                            <li>Third Law: Action and Reaction</li>
+                            <li>Applications and Problem Solving</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="progress-section">
+                            <small class="text-muted">Chapter Progress</small>
+                            <div class="progress mt-2">
+                                <div class="progress-bar" role="progressbar" style="width: 45%; background: var(--newton-color)" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="read-more-btn mt-4" style="color: var(--newton-color)">Read Chapter</button>
+            </div>
+        </div>
+
+        <!-- Energy -->
+        <div class="chapter-card bg-white" id="energy">
+            <div class="card-indicator" style="background: var(--energy-color)"></div>
+            <div class="content-section">
+                <div class="chapter-number">04</div>
+                <h2 class="mb-4" style="color: var(--energy-color)">Work, Energy, and Power</h2>
+                <p class="lead">Understanding energy transfer and conservation.</p>
+                <div class="row mt-4">
+                    <div class="col-md-8">
+                        <ul class="topic-list">
+                            <li>Work and Energy Relationship</li>
+                            <li>Potential and Kinetic Energy</li>
+                            <li>Conservation of Energy</li>
+                            <li>Power and Efficiency</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="progress-section">
+                            <small class="text-muted">Chapter Progress</small>
+                            <div class="progress mt-2">
+                                <div class="progress-bar" role="progressbar" style="width: 30%; background: var(--energy-color)" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="read-more-btn mt-4" style="color: var(--energy-color)">Read Chapter</button>
+            </div>
+        </div>
+
+        <!-- Momentum -->
+        <div class="chapter-card bg-white" id="momentum">
+            <div class="card-indicator" style="background: var(--momentum-color)"></div>
+            <div class="content-section">
+                <div class="chapter-number">05</div>
+                <h2 class="mb-4" style="color: var(--momentum-color)">Momentum and Collisions</h2>
+                <p class="lead">The physics of moving objects and their interactions.</p>
+                <div class="row mt-4">
+                    <div class="col-md-8">
+                        <ul class="topic-list">
+                            <li>Linear Momentum</li>
+                            <li>Conservation of Momentum</li>
+                            <li>Elastic and Inelastic Collisions</li>
+                            <li>Center of Mass</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="progress-section">
+                            <small class="text-muted">Chapter Progress</small>
+                            <div class="progress mt-2">
+                                <div class="progress-bar" role="progressbar" style="width: 15%; background: var(--momentum-color)" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="read-more-btn mt-4" style="color: var(--momentum-color)">Read Chapter</button>
+            </div>
+        </div>
+
+        <!-- Rotation -->
+        <div class="chapter-card bg-white" id="rotation">
+            <div class="card-indicator" style="background: var(--rotation-color)"></div>
+            <div class="content-section">
+                <div class="chapter-number">06</div>
+                <h2 class="mb-4" style="color: var(--rotation-color)">Rotational Motion</h2>
+                <p class="lead">Understanding circular and rotational dynamics.</p>
+                <div class="row mt-4">
+                    <div class="col-md-8">
+                        <ul class="topic-list">
+                            <li>Angular Motion Variables</li>
+                            <li>Torque and Moment of Inertia</li>
+                            <li>Angular Momentum</li>
+                            <li>Rolling Motion</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="progress-section">
+                            <small class="text-muted">Chapter Progress</small>
+                            <div class="progress mt-2">
+                                <div class="progress-bar" role="progressbar" style="width: 5%; background: var(--rotation-color)" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="read-more-btn mt-4" style="color: var(--rotation-color)">Read Chapter</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Navigation -->
+    <div class="floating-nav d-none d-lg-block">
+        <div class="nav-dot" style="background: var(--intro-color)" onclick="scrollToSection('intro')"></div>
+        <div class="nav-dot" style="background: var(--kinematics-color)" onclick="scrollToSection('kinematics')"></div>
+        <div class="nav-dot" style="background: var(--newton-color)" onclick="scrollToSection('newton')"></div>
+        <div class="nav-dot" style="background: var(--energy-color)" onclick="scrollToSection('energy')"></div>
+        <div class="nav-dot" style="background: var(--momentum-color)" onclick="scrollToSection('momentum')"></div>
+        <div class="nav-dot" style="background: var(--rotation-color)" onclick="scrollToSection('rotation')"></div>
+    </div>
+
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.width = particle.style.height = Math.random() * 10 + 5 + 'px';
+                particle.style.animationDuration = Math.random() * 10 + 10 + 's';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Smooth scroll to section
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Initialize particles on page load
+        window.addEventListener('load', createParticles);
+    </script>
+</body>
+</html>
